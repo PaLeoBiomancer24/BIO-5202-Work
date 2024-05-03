@@ -1,0 +1,20 @@
+#Leonardo Maduro-Salvarrey 
+#Bio Research Methods II
+#R Analysis Tutorial Demo: Written Portion 
+#Rarefaction curve analysis is a method of statistical analysis that models the likelihood that the sample population  is representative of the true population. This sequence of steps will create a rarefction curve for a subsample of fossils in order to assess how representative it is likely to be of the fossil assemblage.
+
+#Step 1) Download the Vegan package for R and to run it using library(vegan). 
+#Step 2) Import the required data set (named “mw001_genera”) ifrom its respective repository. Step 3) Create two objects, string.genera and temp.string, as = NULL, in order to use these objects in a for-loop function. 
+#Step 4) Set up a for-loop, using the function for (i in 1:length(mw001_genera$genus)). This will alow us to iteratively sample i specimens for i iterations, i being the same number for each iteration. In this way, the first iteration will sample 1 specimen from the genus column, the second will sample two specimens, and so on. 
+#Step 5) Add brackets at the end of the for-loop function, containing the following function: { temp.string = rep(mw001_genera$genus[i],mw001_genera$specimen_count[i])
+ # string.genera = c(string.genera, temp.string)}. 
+#This replaces the previously-established NULL value of temp.string with a value drawn from the repetition of sampling i specimens from the genus column, and also sets the value of string.genera equal to a character vector consisting of string.genera and temp.string. This will allow for the repetition of the for-loop, in order to generate the data for the rarefaction curve. Step 6) Set sample maximum as total amount of genera in sample, and name an object "resample" equal to 1000 using sample.maximum = sum(mw001_genera$specimen_count) and resample = 1000. This will be the number of iterations or times that the for-loop will resample the dataset. 
+#Step 7) Create a matrix for the rarefaction, where the number collected is equal to the sample maximum, and the number of rows is equal to the the object named "resample". 
+#Step 8) Create a for loop for l of 1 through resample, in which temp.rarefaction result is set to NULL, temp.div(a new object in the environment) is set equal to length(unique(temp.sample)), and temp.rarefactionresult is set equal to c(temp.rarefactionresult, temp.div). 
+#The last component of the for loop, before adding the last bracket, is to set rarefaction.results[l,] equal to temp.rarefactionresult. 
+#Step 9) Plot the rarefaction iterations in the matrix using base R using plot(x = c(1:sample.maximum), y = colMeans(rarefaction.results),  type = "l", main="Rarefaction Analysis", xlab="Iterations", ylab="Number Sampled").
+
+#This should produce a wavy curve approaching an asymptote as it levels out. This leveling-out indicates that the subsample is strongly representative of the fossil assemblage from which it was extrcacted.
+
+
+
